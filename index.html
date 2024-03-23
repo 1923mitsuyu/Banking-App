@@ -1,0 +1,54 @@
+<head>
+    <!-- メタタグ -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- fontawesome -->
+    <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet">
+
+    <title>Page 1</title>
+</head>
+<body>
+<!-- vh-100/vw-100: ビューポートの高さ(=viewport height)/幅(=viewport width)の100％を要素に適用 -->
+<!-- bg-dark: 背景を黒に設定 & d-flex flex-column: フレックスボックスとして表示し要素を縦方向に並べる-->
+<!-- justify-content-center align-items-center: ページのど真ん中に表示　-->
+<div class="vh-100 bg-dark d-flex flex-column justify-content-center align-items-center">
+    <!-- d-flex align-items-center: 白い範囲(=form)を真ん中にする -->
+    <!-- col-md-7: 画面幅が中サイズ以上の場合で7/12つのカラム幅を持つ要素に適用 -->
+    <!-- col-10:それ以外の場合は10/12つのカラム幅を持つ要素に適用 -->
+    <div class="d-flex align-items-center col-md-7 col-10">
+        <div class="bg-white col-12 text-center p-4">
+            <!-- 1行目 -->
+            <h2 class="pb-3">Please type your information below</h2>
+            <form>
+                <!-- 2行目 -->
+                <!-- form-row/row: 要素を横並びにする  -->
+                <div class="form-row pb-3">
+                    <!-- col:rowの中で要素を均等に配置 -->
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+                <!-- 3行目 -->
+                <div class="form-group ">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your bank ID">
+                </div>
+                <!-- 4行目 -->
+                <div class="form-group ">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your first deposit">
+                </div>
+            </form>
+            <div>
+                <!-- btn btn-primary:青色 -->
+                <button type="submit" class="btn btn-primary col-12">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
