@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- メタタグ -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- fontawesome -->
+    <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet">
+
+    <title>Project 2</title>
+    <style>
+        body {
+            font-family: Futura!important;
+            letter-spacing: 0.02em!important;
+        }
+
+        p {
+            margin: 0!important;
+        }
+
+        /* font-size */
+        .rem1p3 {
+            font-size: 1.3rem;
+        }
+
+        .rem1p5 {
+            font-size: 1.5rem;
+        }
+
+        /* background */
+        .bg-green {
+            background: #4BA3A1;
+        }
+
+        .bg-blue {
+            background: #1A4567;
+        }
+
+        /* effect */
+        .hover {
+            cursor: pointer;
+        }
+
+        .hover:hover {
+            opacity: 0.9;
+        }
+
+        /* specific layout */
+        .money-box {
+            margin: 1em 0;
+            border: double 5px white;
+            background: #1A4567;
+            color: white;
+        }
+
+        .calculation-box {
+            margin: 0.5em 0;
+            padding: 0.5em 0;
+            border: solid 2px white;
+            background: #1A4567;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ページ全体の設定 -->
+<div class="vh-100 bg-dark d-flex flex-column justify-content-center align-items-center">
+    <!-- 枠の位置を設定 -->
+    <div class="d-flex align-items-center col-md-7 col-10">
+        <!-- 枠の中の要素の位置を設定 -->
+        <div class="bg-white col-12 text-center p-4 rounded">
+            <h2 class="pb-3">Please Enter The Withdrawal Amount</h2>
+            <!-- form-row: $100(左) 入力欄(右）のように要素を横並びにする　 -->
+            <div class="form-group row">
+                <label for="moneyWithdraw100" class="col-2 col-form-label col-form-label-sm">$100</label>
+                <div class="col-10">
+                    <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="100" id="moneyWithdraw100" placeholder="5">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="moneyWithdraw50" class="col-2 col-form-label col-form-label-sm">$50</label>
+                <div class="col-10">
+                    <!-- number属性 : 数値を増減させる矢印を提供  -->
+                    <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="50" id="moneyWithdraw50" placeholder="1">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="moneyWithdraw20" class="col-2 col-form-label col-form-label-sm">$20</label>
+                <div class="col-10">
+                    <!-- number属性 : 数値を増減させる矢印を提供  -->
+                    <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="20" id="moneyWithdraw20" placeholder="2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="moneyWithdraw10" class="col-2 col-form-label col-form-label-sm">$10</label>
+                <div class="col-10">
+                    <!-- number属性 : 数値を増減させる矢印を提供  -->
+                    <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="10" id="moneyWithdraw10" placeholder="3">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="moneyWithdraw5" class="col-2 col-form-label col-form-label-sm">$5</label>
+                <div class="col-10">
+                    <!-- number属性 : 数値を増減させる矢印を提供  -->
+                    <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="5" id="moneyWithdraw5" placeholder="1">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="moneyWithdraw1" class="col-2 col-form-label col-form-label-sm">$1</label>
+                <div class="col-10">
+                    <!-- number属性 : 数値を増減させる矢印を提供  -->
+                    <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="1" id="moneyWithdraw1" placeholder="4">
+                </div>
+            </div>
+            <!-- 金額表示 -->
+            <div class="text-center money-box p-3">
+                <p id="withdrawTotal">$0.00</p>
+            </div>
+            <!-- ボタン2種類 -->
+            <div class="d-flex justify-content-between">
+                <div class="col-6 pl-0">
+                    <button id="withdrawGoBack" class="btn btn-outline-primary col-12">Go Back</button>
+                </div>
+                <div class="col-6 pr-0">
+                    <button id="withdrawProcess" class="btn btn-primary col-12">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
