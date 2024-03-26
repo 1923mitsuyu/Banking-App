@@ -54,6 +54,8 @@ function initialiseUserAccount() {
 }
 
 function mainBankpage(bankAccount) {
+
+    // 1st Section
     let infoCon = document.createElement("div");
     infoCon.classList.add("pb-2", "pb-md-4", "text-right");
 
@@ -67,7 +69,42 @@ function mainBankpage(bankAccount) {
     moneyP.innerHTML = bankAccount.initialDeposit;
     
     infoCon.append(nameP, accountP, moneyP);
+    
+    // 2nd Section 
+    let balanceCon = document.createElement("div");
+    balanceCon.classList.add("d-flex", "bg-danger", "py-1", "py-md-2");
 
+    balanceCon.innerHTML = 
+    `
+        <p class="col-8 text-left rem1p5">Available Balance</p>
+        <p class="col-4 text-right rem1p5">$12,345</p>
+    `;
+
+    // 3rd Section
+    let menuCon = document.createElement("div");
+    balanceCon.classList.add("d-flex", "justify-content-center", "flex-wrap text-center", "py-3 mx-0");
+
+    balanceCon.innerHTML = 
+    `
+    <div class="col-lg-4 col-12 py-1 py-md-3 px-0 px-md-1">
+        <div id="withdrawBtn" class="bg-blue hover p-3">
+            <h5>WITHDRAWAL</h5>
+            <i class="fas fa-wallet fa-3x"></i>
+        </div>
+        </div>
+        <div class="col-lg-4 col-12 py-1 py-md-3 px-0 px-md-1">
+            <div id="depositBtn" class="bg-blue hover p-3">
+                <h5>DEPOSIT</h5>
+                <i class="fas fa-coins fa-3x"></i>
+            </div>
+            </div>
+            <div class="col-lg-4 col-12 py-1 py-md-3 px-0 px-md-1">
+                <div id="comeBackLaterBtn" class="bg-blue hover p-3">
+                    <h5>COME BACK LATER</h5>
+                    <i class="fas fa-home fa-3x"></i>
+            </div>
+        </div>
+    `
     
     return infoCon
 }
