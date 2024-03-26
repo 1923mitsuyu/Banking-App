@@ -28,7 +28,8 @@ function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-let user; // Define user in the global scope
+// Define user in the global scope
+let user; 
 
 // Called when the user pushes the submit button
 function initialiseUserAccount() {
@@ -44,4 +45,29 @@ function initialiseUserAccount() {
     );
 
     console.log(user);
+
+    // 現在のページを非表示
+    config.initialForm.classList.add("d-none");
+
+    // 次のページを追加
+    config.bankPage.append(mainBankpage(user))
+}
+
+function mainBankpage(bankAccount) {
+    let infoCon = document.createElement("div");
+    infoCon.classList.add("pb-2", "pb-md-4", "text-right");
+
+    let nameP = document.createElement("p");
+    nameP.classList.add("py-1")
+    let accountP = nameP.cloneNode(true)
+    let moneyP = nameP.cloneNode(true);
+
+    nameP.innerHTML = bankAccount.getFullName();
+    accountP.innerHTML = bankAccount.accountNumber;
+    moneyP.innerHTML = bankAccount.initialDeposit;
+    
+    infoCon.append(nameP, accountP, moneyP);
+
+    
+    return infoCon
 }
