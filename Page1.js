@@ -82,9 +82,9 @@ function mainBankpage(bankAccount) {
 
     // 3rd Section
     let menuCon = document.createElement("div");
-    balanceCon.classList.add("d-flex", "justify-content-center", "flex-wrap text-center", "py-3 mx-0");
+    menuCon.classList.add("d-flex", "justify-content-center", "flex-wrap text-center", "py-3 mx-0");
 
-    balanceCon.innerHTML = 
+    menuCon.innerHTML = 
     `
     <div class="col-lg-4 col-12 py-1 py-md-3 px-0 px-md-1">
         <div id="withdrawBtn" class="bg-blue hover p-3">
@@ -105,6 +105,106 @@ function mainBankpage(bankAccount) {
             </div>
         </div>
     `
-    
-    return infoCon
+
+    // 押されたらアラートを出す処理
+    menuCon.querySelectorAll("#withdrawBtn")[0].addEventListener("click", function() {
+        alert("withdraw")
+    })
+    menuCon.querySelectorAll("#depositBtn")[0].addEventListener("click", function() {
+        alert("depositBtn")
+    })
+    menuCon.querySelectorAll("#comeBackLaterBtn")[0].addEventListener("click", function() {
+        alert("comeBackLaterBtn")
+    })
+
+    let container = document.createElement("div");
+    container.append(infoCon, balanceCon, menuCon);
+
+    return container;
+}
+
+// 3ページ目 : component1 
+function billInputSelecter(title) {
+    let container = document.createElement("div");
+    container.innerHTML =
+    `
+    <h2 class="pb-3">${title}</h2>
+    <div class="form-group row">
+        <label for="moneyWithdraw100" class="col-2 col-form-label col-form-label-sm">$100</label>
+        <div class="col-10">
+            <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="100" id="moneyWithdraw100" placeholder="5">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="moneyWithdraw50" class="col-2 col-form-label col-form-label-sm">$50</label>
+        <div class="col-10">
+            <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="50" id="moneyWithdraw50" placeholder="1">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="moneyWithdraw20" class="col-2 col-form-label col-form-label-sm">$20</label>
+        <div class="col-10">
+            <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="20" id="moneyWithdraw20" placeholder="2">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="moneyWithdraw10" class="col-2 col-form-label col-form-label-sm">$10</label>
+        <div class="col-10">
+            <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="10" id="moneyWithdraw10" placeholder="3">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="moneyWithdraw5" class="col-2 col-form-label col-form-label-sm">$5</label>
+        <div class="col-10">
+            <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="5" id="moneyWithdraw5" placeholder="1">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="moneyWithdraw1" class="col-2 col-form-label col-form-label-sm">$1</label>
+        <div class="col-10">
+            <input type="number" class="form-control form-control-sm text-right withdraw-bill" data-bill="1" id="moneyWithdraw1" placeholder="4">
+        </div>
+    </div>
+    <div class="text-center money-box p-3">
+        <p id="withdrawTotal">$0.00</p>
+    </div>
+    `
+    return container
+}
+
+// 3ページ目 : component2 
+function backNextBtn(backString, nextString) {
+    let container = document.createElement("div");
+    container.innerHTML =
+    `
+    <div class="d-flex justify-content-between">
+        <div class="col-6 pl-0">
+            <button id="withdrawGoBack" class="btn btn-outline-primary col-12">${backString}</button>
+        </div>
+        <div class="col-6 pr-0">
+            <button id="withdrawProcess" class="btn btn-primary col-12">${nextString}</button>
+        </div>
+    </div>
+    `
+
+    return container
+}
+
+function withdrawPage() {
+    let container = document.createElement("div");
+    container.classList.add("p-5");
+    container.append(withdrawContainer)
+
+    let withdrawContainer = document.createElement("div");
+    withdrawContainer.append(billInputSelecter("Please Enter The Withdrawal Amount"));
+    withdrawContainer.append(billInputSelecter("back", "next"));
+
+    let billInput = withdrawContainer.querySelector(".bill-input");
+
+    for(let i = 0; i < billInput.length; i++){
+        billInput[i].addEventListener("change", function(event) {
+            document.getElementById("withdrawTotal").innerHTML =  billInput[i].value
+        })
+    }
+    return container
 }
