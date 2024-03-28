@@ -119,7 +119,7 @@ function mainBankpage(bankAccount) {
 
     // 押されたらアラートを出す処理
     menuCon.querySelectorAll("#withdrawBtn")[0].addEventListener("click", function() {
-        alert("withdraw")
+        withdrawController(bankAccount)
     })
     menuCon.querySelectorAll("#depositBtn")[0].addEventListener("click", function() {
         alert("depositBtn")
@@ -244,7 +244,6 @@ function withdrawPage(bankAccount) {
 
         // From here 
     })
-
 
     return container
 }
