@@ -1,7 +1,18 @@
+function displayNone(ele){
+    ele.classList.remove("d-block");
+    ele.classList.add("d-none");
+}
+
+function displayBlock(ele){
+    ele.classList.remove("d-none");
+    ele.classList.add("d-block");
+}
+
  // Store the frequently used div tags 
  const config = {
     initialForm: document.getElementById("initial-form"),
     bankPage: document.getElementById("bankPage"),
+    sidePage: document.getElementById("sidePage"),
 }
 
 // Define a class 
@@ -190,7 +201,7 @@ function backNextBtn(backString, nextString) {
     return container
 }
 
-function withdrawPage() {
+function withdrawPage(bankAccount) {
     let container = document.createElement("div");
     container.classList.add("p-5");
     container.append(withdrawContainer)
@@ -199,6 +210,13 @@ function withdrawPage() {
     withdrawContainer.append(billInputSelecter("Please Enter The Withdrawal Amount"));
     withdrawContainer.append(billInputSelecter("back", "next"));
 
+    let backBtn = withdrawContainer.querySelectorAll(".back-btn").item(0);
+    backBtn.addEventListener("click", function() {
+        displayNone(config.sidePage);
+        displayBlock(config.bankPage);
+        config.bankPage.append(mainBankpage(bankAccount));
+    })
+
     let billInput = withdrawContainer.querySelector(".bill-input");
 
     for(let i = 0; i < billInput.length; i++){
@@ -206,5 +224,37 @@ function withdrawPage() {
             document.getElementById("withdrawTotal").innerHTML =  billInput[i].value
         })
     }
+
+    let nextBtn = withdrawContainer.querySelectorAll(".next.btn").item(0);
+    nextBtn.addEventListener("click", function() {
+        container.innerHTML = "";
+
+        let confirmDialog = document.createElement("div");
+        confirmDialog.append(billDialog("The money you are going to take is...", billInput, "data-bill"));
+        container.append(confirmDialog);
+
+        let total = billSummation(billInput, "data-bill");
+        confirmDialog.innerHTML += 
+        `
+        <div class="d-flex bg-danger py-1 py-md-2 mb-3 text-white">
+            <p class="col-8 text-left rem1p5">Total to be withdrawn: </p>
+            <p class="col-4 text-right rem1p5">$${bankAccount.calculateWithdrawAmount(total)}</p>
+        </div>
+        `
+
+        // From here 
+    })
+
+
     return container
+}
+
+function billSummation(inputElementNodeList, multiplierAttribute){
+
+
+}
+
+function billDialog(title, inputElementNodeList, multiplierAttribute){
+
+
 }
