@@ -250,7 +250,17 @@ function withdrawPage(bankAccount) {
 }
 
 function billSummation(inputElementNodeList, multiplierAttribute){
+    let total = 0; 
 
+    for(let i = 0; i < inputElementNodeList.length; i++) {
+        let currEle = inputElementNodeList[i];
+        let value = parseInt(currEle.value);
+
+        value = currEle.hasAttribute(multiplierAttribute) ? parseInt(currEle.getAttribute(multiplierAttribute)) * value : value;
+        summation += value >= 0 ? value : 0
+    }
+
+    return summation;
 
 }
 
